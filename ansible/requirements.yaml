@@ -1,0 +1,5 @@
+---
+# - src: harryharcourt.ansible-rhel7-cis-benchmarks
+# - src: dharrisio.aws-cloudwatch-logs-agent
+- src: mindpointgroup.rhel7-cis
+- src: dev-sec.os-hardening

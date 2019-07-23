@@ -1,0 +1,22 @@
+image:
+  name: hashicorp/packer:1.3.4
+  entrypoint:
+    - '/usr/bin/env'
+    - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+
+before_script:
+  - packer --version
+
+stages:
+  - validate
+  - build
+
+validate:
+  stage: validate
+  script:
+    - for build in packer/*.json; do echo "Validating ${build}... " ; packer validate ${build} ; done
+
+build:
+  stage: build
+  script:
+    - packer build -force packer/centos7-hardened.json
